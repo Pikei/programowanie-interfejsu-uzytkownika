@@ -8,7 +8,6 @@ public class Menu {
     private final RectangleArea rectangle = new RectangleArea();
     private final NumberSystemsConverter number = new NumberSystemsConverter();
     private final DiagonalOfTheMatrix matrix = new DiagonalOfTheMatrix();
-    private final PerfectNumber perfectNumber = new PerfectNumber();
     private final MenuHealth menuHealth = new MenuHealth();
     private final Bridge bridge = new Bridge();
 
@@ -27,7 +26,7 @@ public class Menu {
             case "1" -> rectangle.enterDataOfRectangle();
             case "2" -> number.convertMenu();
             case "3" -> matrix.menu();
-            case "4" -> perfectNumber.perfectNumber();
+            case "4" -> new PerfectNumber();
             case "5" -> menuHealth.menu();
             case "6" -> bridge.start();
             case "7" -> new TemperatureConverter();
