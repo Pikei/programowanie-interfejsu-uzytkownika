@@ -1,7 +1,6 @@
 package com.company;
 
 import javax.swing.*;
-import java.util.Scanner;
 
 public class PerfectNumber {
     private int number;

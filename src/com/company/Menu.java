@@ -21,6 +21,7 @@ public class Menu {
         System.out.println("4. Perfect number.");
         System.out.println("5. BMI & BMR calculator.");
         System.out.println("6. Bridge points calculator.");
+        System.out.println("7. Celsius to Fahrenheit degrees converter");
         System.out.print("Your choice: ");
         switch (input.next()) {
             case "1" -> rectangle.enterDataOfRectangle();
@@ -29,6 +30,7 @@ public class Menu {
             case "4" -> perfectNumber.perfectNumber();
             case "5" -> menuHealth.menu();
             case "6" -> bridge.start();
+            case "7" -> new TemperatureConverter();
         }
     }
 }
