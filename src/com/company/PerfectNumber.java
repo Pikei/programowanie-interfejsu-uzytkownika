@@ -1,20 +1,21 @@
 package com.company;
 
+import javax.swing.*;
 import java.util.Scanner;
 
 public class PerfectNumber {
     private int number;
-    private final Scanner input = new Scanner(System.in);
 
     public void perfectNumber() {
-        System.out.println("Perfect number is a positive integer that is equal to the sum of its positive divisors, excluding the number itself.");
-        System.out.println("Enter number to check if it is perfect: ");
-        number = input.nextInt();
+        String info = "Perfect number is a positive integer that is equal to the sum of its positive divisors, excluding the number itself.";
+        JOptionPane.showMessageDialog(null, info);
+        number = Integer.parseInt(JOptionPane.showInputDialog(null,"Enter number to check if it is perfect: "));
         if (check()) {
-            System.out.println("Number " + number + " is perfect.");
+            JOptionPane.showMessageDialog(null,"Number " + number + " is perfect.");
         } else {
-            System.out.println("Number " + number + " isn't perfect.");
+            JOptionPane.showMessageDialog(null, "Number " + number + " isn't perfect.");
         }
+        System.exit(0);
     }
 
     private boolean check() {
