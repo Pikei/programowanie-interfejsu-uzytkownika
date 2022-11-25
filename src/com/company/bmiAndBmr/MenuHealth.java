@@ -12,15 +12,22 @@ public class MenuHealth {
 
     public void menu() {
         System.out.println("Please type necessary data:");
+        boolean exit;
         do {
-            System.out.println("gender (F/M) - ");
-        } while (getLifestyle() == 0);
-        setGender(input.next());
+            System.out.print("gender (F/M) - ");
+            setGender(input.next());
+            if (!(getGender().equalsIgnoreCase("F") || (getGender().equalsIgnoreCase("M")))) {
+                System.out.println("Please choose correct option.");
+                exit = false;
+            } else {
+                exit = true;
+            }
+        } while (!exit);
         System.out.print("age - ");
         setAge(input.nextInt());
         System.out.print("height (cm) - ");
         setHeight(input.nextDouble());
-        System.out.println("weight (kg) - ");
+        System.out.print("weight (kg) - ");
         setWeight(input.nextDouble());
         do {
             System.out.println("Choose your lifestyle:");
@@ -36,10 +43,10 @@ public class MenuHealth {
 
     private void printResults() {
         System.out.println("======BMI======");
-        Bmi bmi = new Bmi();
+        Bmi bmi = new Bmi(getWeight(), getHeight());
         bmi.summary();
         System.out.println("======BMR======");
-        Bmr bmr = new Bmr();
+        Bmr bmr = new Bmr(getWeight(), getHeight(), getLifestyle(), getGender(), getAge());
         bmr.result();
     }
 

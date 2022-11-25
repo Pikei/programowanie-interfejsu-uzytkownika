@@ -21,14 +21,14 @@ public class Menu {
         System.out.println("4. Perfect number.");
         System.out.println("5. BMI & BMR calculator.");
         System.out.println("6. Bridge points calculator.");
-        System.out.print("Your choise: ");
+        System.out.print("Your choice: ");
         switch (input.next()) {
             case "1" -> rectangle.enterDataOfRectangle();
-//            case "2" ->
-//            case "3" ->
-//            case "4" ->
+            case "2" -> number.convertMenu();
+            case "3" -> matrix.menu();
+            case "4" -> perfectNumber.perfectNumber();
             case "5" -> menuHealth.menu();
-//            case "6" ->
+            case "6" -> bridge.start();
         }
     }
 }

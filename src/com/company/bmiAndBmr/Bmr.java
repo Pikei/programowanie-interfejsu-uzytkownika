@@ -1,8 +1,17 @@
 package com.company.bmiAndBmr;
 
-public class Bmr extends MenuHealth {
-    private double bmr;
-    private double dcr;
+public class Bmr {
+    private double bmr, dcr, weight, height, lifestyle;
+    private String gender;
+    private int age;
+
+    public Bmr(double weight, double height, double lifestyle, String gender, int age) {
+        this.weight = weight;
+        this.height = height;
+        this.lifestyle = lifestyle;
+        this.gender = gender;
+        this.age = age;
+    }
 
     private void calculator() {
         if (getGender().equalsIgnoreCase("F")) {
@@ -32,5 +41,45 @@ public class Bmr extends MenuHealth {
 
     public void setDcr(double dcr) {
         this.dcr = dcr;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getLifestyle() {
+        return lifestyle;
+    }
+
+    public void setLifestyle(double lifestyle) {
+        this.lifestyle = lifestyle;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

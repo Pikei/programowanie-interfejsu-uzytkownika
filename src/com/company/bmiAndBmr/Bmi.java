@@ -1,7 +1,14 @@
 package com.company.bmiAndBmr;
 
-public class Bmi extends MenuHealth {
+public class Bmi{
     private double bmi;
+    private double weight;
+    private double height;
+
+    public Bmi(double weight, double height) {
+        this.weight = weight;
+        this.height = height/100;
+    }
 
     private void converter() {
         setBmi(getWeight() / (getHeight() * getHeight()));
@@ -40,4 +47,19 @@ public class Bmi extends MenuHealth {
         this.bmi = bmi;
     }
 
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
 }
