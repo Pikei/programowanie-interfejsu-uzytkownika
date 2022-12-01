@@ -9,7 +9,7 @@ public class Menu {
     private final NumberSystemsConverter number = new NumberSystemsConverter();
     private final DiagonalOfTheMatrix matrix = new DiagonalOfTheMatrix();
     private final MenuHealth menuHealth = new MenuHealth();
-    private final Bridge bridge = new Bridge();
+//    private final Bridge bridge = new Bridge();
 
     public void mainMenu() {
         System.out.println("Welcome!");
@@ -28,7 +28,7 @@ public class Menu {
             case "3" -> matrix.menu();
             case "4" -> new PerfectNumber();
             case "5" -> menuHealth.menu();
-            case "6" -> bridge.start();
+            case "6" -> new Bridge();
             case "7" -> new TemperatureConverter();
         }
     }
