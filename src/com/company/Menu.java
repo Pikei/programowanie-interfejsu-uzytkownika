@@ -28,10 +28,7 @@ public class Menu {
             case "3" -> matrix.menu();
             case "4" -> new PerfectNumber();
             case "5" -> menuHealth.menu();
-            case "6" -> {
-                Bridge brydz = new Bridge();
-                brydz.randomCardsGenerator(13);
-            }
+            case "6" -> new Bridge();
             case "7" -> new TemperatureConverter();
         }
     }
