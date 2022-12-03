@@ -1,6 +1,8 @@
 package com.company;
 
 import com.company.bmiAndBmr.MenuHealth;
+import com.company.bridge.Bridge;
+
 import java.util.Scanner;
 
 public class Menu {

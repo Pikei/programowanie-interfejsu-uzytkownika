@@ -1,4 +1,4 @@
-package com.company;
+package com.company.bridge;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -109,68 +109,30 @@ public class Bridge extends Frame implements ActionListener {
     }
 
     private String convert(int card) {
-        switch (card) {
-            case 0 -> {
-                return "a";
-            }
-            case 1 -> {
-                return "k";
-            }
-            case 2 -> {
-                return "q";
-            }
-            case 3 -> {
-                return "j";
-            }
-            case 4 -> {
-                return "10";
-            }
-            case 5 -> {
-                return "9";
-            }
-            case 6 -> {
-                return "8";
-            }
-            case 7 -> {
-                return "7";
-            }
-            case 8 -> {
-                return "6";
-            }
-            case 9 -> {
-                return "5";
-            }
-            case 10 -> {
-                return "4";
-            }
-            case 11 -> {
-                return "3";
-            }
-            case 12 -> {
-                return "2";
-            }
-        }
-        return null;
+        CardSymbol[] cardSymbol = CardSymbol.values();
+        return cardSymbol[card].getDisplaySymbol();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String label = e.getActionCommand();
-        if (label.equals("Points")) {
-            try {
-                setCards(argument.getText().toLowerCase());
-                start();
-                JOptionPane.showMessageDialog(null, "Your points equals: " + getPoints());
-                setPoints(0);
-            } catch (NumberFormatException ev) {
-                System.out.println("Arguments error! Please type correct data.");
-            }
-        } else if (label.equals("Randomize")) {
-            randomize();
-            argument.setText(cards);
-        }
-        else if (label.equals("Shutdown")) {
-            System.exit(0);
+        switch (label) {
+            case "Points":
+                try {
+                    setCards(argument.getText().toLowerCase());
+                    start();
+                    JOptionPane.showMessageDialog(null, "Your points equals: " + getPoints());
+                    setPoints(0);
+                } catch (NumberFormatException ev) {
+                    System.out.println("Arguments error! Please type correct data.");
+                }
+                break;
+            case "Randomize":
+                randomize();
+                argument.setText(cards);
+                break;
+            case "Shutdown":
+                System.exit(0);
         }
     }
 
