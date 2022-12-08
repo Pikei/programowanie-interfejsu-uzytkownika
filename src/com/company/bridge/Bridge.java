@@ -9,9 +9,9 @@ import java.util.*;
 import java.awt.*;
 
 public class Bridge extends Frame implements ActionListener {
-    private String cards;
+    private String spadesCards, heartsCards, diamondCards, clubsCards;
     private int points;
-    private TextField argument;
+    private TextField spades, hearts, diamonds, clubs;
     private Label result;
     private Button calculate;
     private Button random;
@@ -23,8 +23,18 @@ public class Bridge extends Frame implements ActionListener {
         setLayout(new FlowLayout());
         setBackground(Color.lightGray);
         add(new Label("Enter your cards:"));
-        argument = new TextField(21);
-        add(argument);
+        add(new Label("Spades:"));
+        spades = new TextField(10);
+        add(spades);
+        add(new Label("Hearts:"));
+        hearts = new TextField(10);
+        add(hearts);
+        add(new Label("Diamonds:"));
+        diamonds = new TextField(10);
+        add(diamonds);
+        add(new Label("Clubs:"));
+        clubs = new TextField(10);
+        add(clubs);
         calculate = new Button("Points");
         calculate.addActionListener(this);
         add(calculate);
@@ -47,15 +57,23 @@ public class Bridge extends Frame implements ActionListener {
 
     public void start() {
         setPoints(0);
-        cards.replace("10","t");
-        figurePoints();
-        suitPoints((cards.indexOf('h') - cards.indexOf('s')-1));
-        suitPoints((cards.indexOf('d') - cards.indexOf('h')-1));
-        suitPoints((cards.indexOf('c') - cards.indexOf('d')-1));
-        suitPoints((cards.charAt(cards.length()-1) - cards.indexOf('c')-1));
+        spadesCards.replace("10","t");
+        heartsCards.replace("10","t");
+        diamondCards.replace("10","t");
+        clubsCards.replace("10","t");
+
+        figurePoints(spadesCards);
+        figurePoints(heartsCards);
+        figurePoints(diamondCards);
+        figurePoints(clubsCards);
+
+        suitPoints(spadesCards.length()-1);
+        suitPoints(heartsCards.length()-1);
+        suitPoints(diamondCards.length()-1);
+        suitPoints(clubsCards.length()-1);
     }
 
-    private void figurePoints() {
+    private void figurePoints(String cards) {
         for (int i = 0; i < cards.length(); i++) {
             switch (cards.toLowerCase().charAt(i)) {
                 case 'a' -> setPoints(points + 4);
@@ -77,15 +95,15 @@ public class Bridge extends Frame implements ActionListener {
     public void randomize(){
         int bound = 13;
         int temp = randomizeSuitQuantity(bound);
-        setCards("s" + randomCardsGenerator(bound, temp));
+        setSpadesCards(randomCardsGenerator(bound, temp));
         bound = bound - temp;
         temp = randomizeSuitQuantity(bound);
-        setCards(getCards() + "h" + randomCardsGenerator(bound, temp));
+        setHeartsCards(randomCardsGenerator(bound, temp));
         bound = bound - temp;
         temp = randomizeSuitQuantity(bound);
-        setCards(getCards() + "d" + randomCardsGenerator(bound, temp));
+        setDiamondCards(randomCardsGenerator(bound, temp));
         bound = bound - temp;
-        setCards(getCards() + "c"+ randomCardsGenerator(bound, bound));
+        setClubsCards(randomCardsGenerator(bound, bound));
     }
 
     private int randomizeSuitQuantity(int bound) {
@@ -119,7 +137,10 @@ public class Bridge extends Frame implements ActionListener {
         switch (label) {
             case "Points":
                 try {
-                    setCards(argument.getText().toLowerCase());
+                    setSpadesCards(spades.getText().toLowerCase());
+                    setHeartsCards(hearts.getText().toLowerCase());
+                    setDiamondCards(diamonds.getText().toLowerCase());
+                    setClubsCards(clubs.getText().toLowerCase());
                     start();
                     JOptionPane.showMessageDialog(null, "Your points equals: " + getPoints());
                     setPoints(0);
@@ -129,19 +150,46 @@ public class Bridge extends Frame implements ActionListener {
                 break;
             case "Randomize":
                 randomize();
-                argument.setText(cards);
+                spades.setText(spadesCards);
+                hearts.setText(heartsCards);
+                diamonds.setText(diamondCards);
+                clubs.setText(clubsCards);
                 break;
             case "Shutdown":
                 System.exit(0);
         }
     }
 
-    public String getCards() {
-        return cards;
+    public String getSpadesCards() {
+        return spadesCards;
     }
 
-    public void setCards(String cards) {
-        this.cards = cards;
+    public void setSpadesCards(String spadesCards) {
+        this.spadesCards = spadesCards;
+    }
+
+    public String getHeartsCards() {
+        return heartsCards;
+    }
+
+    public void setHeartsCards(String heartsCards) {
+        this.heartsCards = heartsCards;
+    }
+
+    public String getDiamondCards() {
+        return diamondCards;
+    }
+
+    public void setDiamondCards(String diamondCards) {
+        this.diamondCards = diamondCards;
+    }
+
+    public String getClubsCards() {
+        return clubsCards;
+    }
+
+    public void setClubsCards(String clubsCards) {
+        this.clubsCards = clubsCards;
     }
 
     public int getPoints() {
@@ -150,14 +198,6 @@ public class Bridge extends Frame implements ActionListener {
 
     public void setPoints(int points) {
         this.points = points;
-    }
-
-    public TextField getArgument() {
-        return argument;
-    }
-
-    public void setArgument(TextField argument) {
-        this.argument = argument;
     }
 
     public Label getResult() {
