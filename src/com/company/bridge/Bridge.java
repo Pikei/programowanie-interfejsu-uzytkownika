@@ -1,61 +1,71 @@
 package com.company.bridge;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
+import javax.swing.*;
 
-public class Bridge extends Frame implements ActionListener {
+public class Bridge extends JFrame implements ActionListener {
     private String spadesCards, heartsCards, diamondCards, clubsCards;
     private int points;
-    private TextField spades, hearts, diamonds, clubs;
+    private JFrame frame;
+    private JLabel s,h,d,c;
+    private final TextField spades;
+    private final TextField hearts;
+    private final TextField diamonds;
+    private final TextField clubs;
     private Label result;
-    private Button calculate;
-    private Button random;
+    private Button calculate, random;
     Random rand = new Random();
 
     public Bridge() {
-        super("Points of your cards");
-        setSize(500, 300);
-        setLayout(new FlowLayout());
-        setBackground(Color.lightGray);
-        add(new Label("Enter your cards:"));
-        add(new Label("Spades:"));
-        spades = new TextField(10);
-        add(spades);
-        add(new Label("Hearts:"));
-        hearts = new TextField(10);
-        add(hearts);
-        add(new Label("Diamonds:"));
-        diamonds = new TextField(10);
-        add(diamonds);
-        add(new Label("Clubs:"));
-        clubs = new TextField(10);
-        add(clubs);
+        frame = new JFrame("Points of your cards");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        String suitSource = "C:/Users/215ikarolp/IdeaProjects/programowanie-interfejsu-uzytkownika/out/production/programowanie_interfejsu_użytkownika/com/company/bridge/";
+        s = scale(suitSource +"spades.png");
+        h = scale(suitSource + "hearts.png");
+        d = scale(suitSource + "diamonds.png");
+        c = scale(suitSource + "clubs.png");
         calculate = new Button("Points");
         calculate.addActionListener(this);
-        add(calculate);
-        result = new Label(" Calculate your points.");
-        add(result);
         random = new Button("Randomize");
         random.addActionListener(this);
-        add(random);
+        spades = new TextField(10);
+        hearts = new TextField(10);
+        diamonds = new TextField(10);
+        clubs = new TextField(10);
+        BorderLayout l1 = new BorderLayout();
+        setLayout(l1);
 
-        setVisible(true);
+        JPanel p1 = new JPanel();
+        JPanel p2 = new JPanel();
+        JPanel p3 = new JPanel();
 
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                super.windowClosing(e);
-                System.exit(0);
-            }
-        });
+        p1.add(add(scale(suitSource +"spades.png")));
+        p1.add(spades);
+        p2.add(scale(suitSource + "hearts.png"));
+        p2.add(add(hearts));
+        p2.add(random);
+        p2.add(calculate);
+        p2.add(scale(suitSource + "diamonds.png"));
+        p2.add(diamonds);
+        p3.add(scale(suitSource + "clubs.png"));
+        p3.add(clubs);
+
+        frame.setLayout(l1);
+        frame.add(p1, BorderLayout.NORTH);
+        frame.add(p2, BorderLayout.CENTER);
+        frame.add(p3, BorderLayout.SOUTH);
+
+        frame.setBackground(Color.lightGray);
+        frame.setSize(500,175);
+        frame.setVisible(true);
+
     }
 
-    public void start() {
+    private void start() {
         setPoints(0);
         spadesCards.replace("10","t");
         heartsCards.replace("10","t");
@@ -157,7 +167,17 @@ public class Bridge extends Frame implements ActionListener {
                 break;
             case "Shutdown":
                 System.exit(0);
+                break;
         }
+    }
+
+
+    private JLabel scale(String source) {
+        ImageIcon imageIcon = new ImageIcon(source);
+        Image image = imageIcon.getImage();
+        Image newimg = image.getScaledInstance(30, 35,  java.awt.Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(newimg);
+        return new JLabel(imageIcon);
     }
 
     public String getSpadesCards() {
