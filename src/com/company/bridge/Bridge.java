@@ -18,7 +18,7 @@ public class Bridge extends JFrame implements ActionListener {
     private final TextField clubs;
     private Label result;
     private Button calculate, random;
-    Random rand = new Random();
+    private Random rand = new Random();
 
     public Bridge() {
         frame = new JFrame("Points of your cards");

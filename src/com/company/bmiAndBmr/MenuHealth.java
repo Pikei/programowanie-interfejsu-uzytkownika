@@ -1,14 +1,53 @@
 package com.company.bmiAndBmr;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.Scanner;
 
-public class MenuHealth {
+public class MenuHealth extends JFrame {
     private final Scanner input = new Scanner(System.in);
     private int age;
-    private double height;
+    private double howTall;
     private double weight;
     private double lifestyle;
     private String gender;
+
+    private JLabel weightLabel, heightLabel, ageLabel,genderLabel,lifestyleLabel;
+    private JButton bmi,bmr;
+
+
+    public MenuHealth() {
+        JFrame frame = new JFrame("BMI and BMR calculator");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        weightLabel = new JLabel("Weight: ");
+//        frame.add(weightLabel);
+
+        SpinnerModel value =
+                new SpinnerNumberModel(0, //initial value
+                        0, //minimum value
+                        300, //maximum value
+                        0.1); //step
+
+        JSpinner spinner = new JSpinner(value);
+        spinner.setBounds(100,100,50,30);
+        frame.add(spinner);
+        frame.setSize(300,300);
+        frame.setLayout(null);
+        frame.setVisible(true);
+
+//        JPanel p1 = new JPanel();
+//
+//        p1.add(weightLabel, value);
+//        frame.add(p1);
+//
+//        BorderLayout l1 = new BorderLayout();
+//        setLayout(l1);
+
+        frame.setBackground(Color.lightGray);
+        frame.setSize(500,175);
+        frame.setVisible(true);
+    }
 
     public void menu() {
         System.out.println("Please type necessary data:");
@@ -26,7 +65,7 @@ public class MenuHealth {
         System.out.print("age - ");
         setAge(input.nextInt());
         System.out.print("height (cm) - ");
-        setHeight(input.nextDouble());
+        setHowTall(input.nextDouble());
         System.out.print("weight (kg) - ");
         setWeight(input.nextDouble());
         do {
@@ -72,6 +111,7 @@ public class MenuHealth {
         return 0;
     }
 
+
     public int getAge() {
         return age;
     }
@@ -80,12 +120,12 @@ public class MenuHealth {
         this.age = age;
     }
 
-    public double getHeight() {
-        return height;
+    public double getHowTall() {
+        return howTall;
     }
 
-    public void setHeight(double height) {
-        this.height = height;
+    public void setHowTall(double howTall) {
+        this.howTall = howTall;
     }
 
     public double getWeight() {
@@ -110,5 +150,45 @@ public class MenuHealth {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public JLabel getWeightLabel() {
+        return weightLabel;
+    }
+
+    public void setWeightLabel(JLabel weightLabel) {
+        this.weightLabel = weightLabel;
+    }
+
+    public JLabel getHeightLabel() {
+        return heightLabel;
+    }
+
+    public void setHeightLabel(JLabel heightLabel) {
+        this.heightLabel = heightLabel;
+    }
+
+    public JLabel getAgeLabel() {
+        return ageLabel;
+    }
+
+    public void setAgeLabel(JLabel ageLabel) {
+        this.ageLabel = ageLabel;
+    }
+
+    public JLabel getGenderLabel() {
+        return genderLabel;
+    }
+
+    public void setGenderLabel(JLabel genderLabel) {
+        this.genderLabel = genderLabel;
+    }
+
+    public JLabel getLifestyleLabel() {
+        return lifestyleLabel;
+    }
+
+    public void setLifestyleLabel(JLabel lifestyleLabel) {
+        this.lifestyleLabel = lifestyleLabel;
     }
 }

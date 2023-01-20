@@ -10,7 +10,7 @@ public class Menu {
     private final RectangleArea rectangle = new RectangleArea();
     private final NumberSystemsConverter number = new NumberSystemsConverter();
     private final DiagonalOfTheMatrix matrix = new DiagonalOfTheMatrix();
-    private final MenuHealth menuHealth = new MenuHealth();
+//    private final MenuHealth menuHealth = new MenuHealth();
 //    private final Bridge bridge = new Bridge();
 
     public void mainMenu() {
@@ -29,7 +29,7 @@ public class Menu {
             case "2" -> number.convertMenu();
             case "3" -> matrix.menu();
             case "4" -> new PerfectNumber();
-            case "5" -> menuHealth.menu();
+            case "5" -> new MenuHealth();
             case "6" -> new Bridge();
             case "7" -> new TemperatureConverter();
         }
